@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+    .toast {
+      animation: slideIn 0.3s ease-in-out;
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-white dark:bg-gray-900 min-h-screen">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="hidden fixed top-4 right-4 z-50 toast">
+    <div class="bg-gradient-to-r from-green-400 to-emerald-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-2">
+      <i class="fas fa-check-circle"></i>
+      <span id="toastMessage"></span>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto p-6">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-4xl font-bold dark:text-white">📝 My Tasks</h1>
+      <button onclick="openAddModal()"
+        class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all hover:scale-105">
+        <i class="fas fa-plus mr-2"></i>Add Task
+      </button>
+    </div>
+
+    <!-- Filter & Search Bar -->
+    <div class="flex flex-col md:flex-row gap-4 mb-6">
+      <input 
+        type="text" 
+        id="searchInput"
+        onkeyup="renderTasks()"
+        placeholder="Search tasks..."
+        class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm"
+      />
+
+      <select id="filter" onchange="renderTasks()"
+        class="px-4 py-3 bg-white dark:bg-gray-800 dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 font-medium">
+        <option value="all">All Tasks</option>
+        <option value="pending">Pending</option>
+        <option value="in-progress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+    </div>
+
+    <!-- Tasks Container -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700">
+      <ul id="taskList" class="space-y-3"></ul>
+      <div id="emptyState" class="text-center py-12 text-gray-500 dark:text-gray-400">
+        <i class="fas fa-inbox text-5xl mb-4"></i>
+        <p class="text-lg">No tasks yet. Create one to get started!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Modal -->
+  <div id="modal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+    <div class="bg-white dark:bg-gray-800 w-96 rounded-xl shadow-xl p-8 border border-gray-200 dark:border-gray-700">
+      <h2 id="modalTitle" class="text-2xl font-bold mb-6 dark:text-white">Add Task</h2>
+
+      <input id="taskInput" type="text"
+        class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 mb-4"
+        placeholder="Enter task description...">
+
+      <select id="statusSelect" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 mb-6">
+        <option value="pending">Pending</option>
+        <option value="in-progress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+
+      <div class="flex gap-3 justify-end">
+        <button onclick="closeModal()" class="px-4 py-2 border border-gray-300 dark:border-gray-600 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+          Cancel
+        </button>
+        <button onclick="saveTask()" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all">
+          Save Task
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    let editIndex = null;
+
+    window.onload = renderTasks;
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      toastMessage.textContent = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3000);
+    }
+
+    function renderTasks() {
+      const list = document.getElementById("taskList");
+      const emptyState = document.getElementById("emptyState");
+      const filter = document.getElementById("filter").value;
+      const searchText = document.getElementById("searchInput").value.toLowerCase();
+
+      list.innerHTML = "";
+      let hasVisibleTasks = false;
+
+      tasks.forEach((task, index) => {
+        // Filter by status
+        if (filter !== "all" && task.status !== filter) return;
+
+        // Search by task name
+        if (!task.text.toLowerCase().includes(searchText)) return;
+
+        hasVisibleTasks = true;
+
+        const li = document.createElement("li");
+        li.className = "flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow";
+
+        const statusColors = {
+          "pending": "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-200",
+          "in-progress": "bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-200",
+          "completed": "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-200"
+        };
+
+        const statusIcons = {
+          "pending": "fa-circle-exclamation",
+          "in-progress": "fa-spinner",
+          "completed": "fa-check-circle"
+        };
+
+        li.innerHTML = `
+          <div class="flex-1">
+            <p class="font-semibold text-gray-800 dark:text-white text-sm ${task.status === "completed" ? "line-through text-gray-400 dark:text-gray-500" : ""}">
+              ${task.text}
+            </p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">${task.date}</p>
+          </div>
+
+          <div class="flex items-center gap-3 ml-4">
+            <span class="px-3 py-1 text-xs font-semibold rounded-full ${statusColors[task.status]} flex items-center gap-1">
+              <i class="fas ${statusIcons[task.status]}"></i>
+              ${task.status.replace('-', ' ').toUpperCase()}
+            </span>
+
+            <button onclick="editTask(${index})"
+              class="px-3 py-2 text-blue-500 hover:bg-blue-50 dark:hover:bg-gray-600 rounded transition" title="Edit">
+              <i class="fas fa-edit"></i>
+            </button>
+
+            <button onclick="deleteTask(${index})"
+              class="px-3 py-2 text-red-500 hover:bg-red-50 dark:hover:bg-gray-600 rounded transition" title="Delete">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        `;
+
+        list.appendChild(li);
+      });
+
+      emptyState.classList.toggle('hidden', hasVisibleTasks);
+    }
+
+    function openAddModal() {
+      editIndex = null;
+      document.getElementById("modalTitle").innerText = "Add New Task";
+      document.getElementById("taskInput").value = "";
+      document.getElementById("statusSelect").value = "pending";
+      document.getElementById("modal").classList.remove("hidden");
+      document.getElementById("taskInput").focus();
+    }
+
+    function editTask(index) {
+      editIndex = index;
+      document.getElementById("modalTitle").innerText = "Edit Task";
+      document.getElementById("taskInput").value = tasks[index].text;
+      document.getElementById("statusSelect").value = tasks[index].status;
+      document.getElementById("modal").classList.remove("hidden");
+      document.getElementById("taskInput").focus();
+    }
+
+    function saveTask() {
+      const text = document.getElementById("taskInput").value.trim();
+      const status = document.getElementById("statusSelect").value;
+
+      if (!text) {
+        showToast("❌ Please enter a task description");
+        return;
+      }
+
+      const date = new Date().toLocaleString();
+
+      if (editIndex === null) {
+        tasks.push({ text, status, date });
+        showToast("✅ Task added successfully");
+      } else {
+        tasks[editIndex].text = text;
+        tasks[editIndex].status = status;
+        showToast("✅ Task updated successfully");
+        editIndex = null;
+      }
+
+      saveTasks();
+      closeModal();
+      renderTasks();
+    }
+
+    function deleteTask(index) {
+      if (confirm("Are you sure you want to delete this task?")) {
+        tasks.splice(index, 1);
+        saveTasks();
+        renderTasks();
+        showToast("🗑️ Task deleted");
+      }
+    }
+
+    function saveTasks() {
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    function closeModal() {
+      document.getElementById("modal").classList.add("hidden");
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="Portfolio.css">
+  <script src="https://kit.fontawesome.com/19a596eb97.js" crossorigin="anonymous"></script>
+  
+</head>
+<body>
+  <section>
+  <div id="header">
+    <div class="container">
+      <nav>
+        <img src="myimages/logo.png" class="logo">
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <button id="toggle-theme" style="background: none; border: none; cursor: pointer; font-size: 24px; color: white;">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <i class="fa-solid fa-bars" onclick="openmenu()" style="display: none;"></i>
+        </div>
+        <ul id="sidemenu">
+          <li><a href="#header">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <i class="fa-solid fa-times" onclick="closemenu()"></i>
+        </ul>
+      </nav>
+      <div class="header-text">
+        <span id="typing-animation"></span>
+
+
+        <script>
+        const typingAnimationElement = document.getElementById('typing-animation');
+        const typingTexts = [
+        'Software Developer  ',
+        'Data Analyst  ',
+        'Front-End Developer   ',
+        ];
+
+        function playTypingAnimation(text) {
+        for (let i = 0; i < text.length; i++) {
+          setTimeout(() => {
+          typingAnimationElement.textContent += text[i];
+          }, i * 100); 
+        }
+        setTimeout(() => {
+          typingAnimationElement.textContent = '';
+          playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
+        }, text.length *100);
+        }
+        playTypingAnimation(typingTexts[0]);
+      </script>
+
+        <h1>Hi, I'm <span>Keerthi</span> <br> From India</h1>
+        
+        <div class="contact-left">
+          <p> <i class="fa-solid fa-envelope"></i>
+              keerthiramatenki@gmail.com</p>
+          <p><i class="fa-solid fa-square-phone"></i>      +91-9347547085</p>
+          <a href="myimages/my_resume.pdf" download class="btn btn-2">Download Resume</a>
+        </div>
+        
+    </div>
+  </div>
+
+
+
+</section>
+  
+  
+
+  <!--------------------------------- About Section ------------------->
+   <section>
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1">
+          <img src="myimages/user.png" alt="User Image">
+        </div>
+        <div class="about-col-2">
+          <h1 class="sub-title">About Me</h1>
+          <p>I am currently pursuing my B.Tech in my 4th year at NIT Raipur. I am proficient in programming languages such as C, C++, and Python, and I have experience with tech stacks like HTML, CSS, JavaScript, and React.js. I have successfully completed several projects related to web development. In addition to my technical skills, I have taken on leadership roles, serving as the Secretary of the ECE Department and the Head Coordinator of the Robotics Club at NIT Raipur.</p>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-----------------------------------Education-->
+
+<div class="tab-contents" id="education">
+  <p class="tab-links" onclick="opentab(event, 'education')">Education</p>
+    <ul>
+      <li><span>2021-2025</span> <br>B.Tech from NIT Raipur</li>
+      <li><span>2019-2021</span> <br>Intermediate - MPC</li>
+      <li><span>2014-2019</span> <br>5th to 10th grade</li>
+    </ul>
+  /div>
+        
+
+
+<!------------------------------------Experience _________________-->
+<div>
+  <p class="tab-links" onclick="opentab(event, 'experience')">Experience</p>
+  <div>
+    <div class="tab-contents active-tab" id="skills">
+            <ul>
+              <li><span>Software Developer</span> <br>Design, develop, and maintain software systems</li>
+              <li><span>Web Development</span> <br>Web app Development</li>
+              <li><span>Data Analysis</span> <br>Analyze data to inform decisions</li>
+            </ul>
+          </div>
+
+          <div class="tab-contents" id="experience">
+            <ul>
+              <li><span>Software Developer Intern</span> <br>Worked on XYZ projects and improved development process efficiency.</li>
+              <li><span>Web Developer Intern</span> <br>Built and maintained client-facing web applications.</li>
+            </ul>
+          </div>
+  </div>
+
+</div>
+<!-------------------------------------------------------------------------------SKILLLS---------------------------->
+
+<div id="skills" class="skills">
+  <div class="main-text">
+    <h2>My Skills</h2>
+  </div>
+
+  <div class="skill-main">
+    <!-- Left: Technical Skills -->
+    <div class="skill-left">
+      <h3>Technical Skills</h3>
+
+      <div class="skill-bar">
+        <div class="info">
+          <p>HTML</p>
+          <p>85%</p>
+        </div>
+        <div class="bar">
+          <span class="html"></span>
+        </div>
+      </div>
+
+      <div class="skill-bar">
+        <div class="info">
+          <p>CSS</p>
+          <p>80%</p>
+        </div>
+        <div class="bar">
+          <span class="css"></span>
+        </div>
+      </div>
+
+      <div class="skill-bar">
+        <div class="info">
+          <p>JavaScript</p>
+          <p>75%</p>
+        </div>
+        <div class="bar">
+          <span class="javascript"></span>
+        </div>
+      </div>
+
+      <div class="skill-bar">
+        <div class="info">
+          <p>Reactjs</p>
+          <p>70%</p>
+        </div>
+        <div class="bar">
+          <span class="reactjs"></span>
+        </div>
+      </div>
+
+      <div class="skill-bar">
+        <div class="info">
+          <p>C & C++</p>
+          <p>100%</p>
+        </div>
+        <div class="bar">
+          <span class="c"></span>
+        </div>
+      </div>
+
+      <div class="skill-bar">
+        <div class="info">
+          <p>Python</p>
+          <p>70%</p>
+        </div>
+        <div class="bar">
+          <span class="python"></span>
+        </div>
+      </div>
+
+      <div class="skill-bar">
+        <div class="info">
+          <p>Nodejs</p>
+          <p>60%</p>
+        </div>
+        <div class="bar">
+          <span class="nodejs"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Professional Skills -->
+    <div class="skill-right">
+      <h3 class="professional-text">Professional Skills</h3>
+      <div class="professional">
+        <div class="box">
+          <div class="circle"></div>
+          <div class="text">
+            <small>Team Work</small>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="circle"></div>
+          <div class="text">
+            <small>Event Management</small>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="circle"></div>
+          <div class="text">
+            <small>Innovative &<br>Creative</small>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="circle"></div>
+          <div class="text">
+            <small>Leadership</small>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="circle"></div>
+          <div class="text">
+            <small>Adaptive</small>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="circle"></div>
+          <div class="text">
+            <small>Time Management</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="other-skills">
+  <h3 class="other-text">Other Skills</h3>
+  <div class="grid-container">
+      <div class="grid-item">DBMS</div>
+      <div class="grid-item">Operating Systems</div>
+      <div class="grid-item">OOPs</div>
+      <div class="grid-item">MySQL</div>
+      <div class="grid-item">Power BI</div>
+      <div class="grid-item">MS Excel</div>
+      <div class="grid-item">Computer Networks</div>
+      <div class="grid-item">Github</div>
+  </div>
+</div>
+
+  <!----------------------------------------------Services----------------->
+<section>
+  <div id="services">
+    <div class="container">
+      <h1 class="sub-title">My Services</h1>
+      <div class="services-list">
+        <div>
+          <i class="fa-solid fa-code"></i>
+          <h2>Software Developer</h2>
+          <p>Web design is the process of creating visually appealing and user-friendly websites that enhance user experience through layout, colors, fonts, and interactive elements.
+          </p>
+          <a href="#">Learn more</a>
+        </div>
+        <div>
+          <i class="fa-solid fa-crop"></i>
+          <h2>Web Design</h2>
+          <p>Web design focuses on creating visually appealing and user-friendly interfaces for websites, while web development involves the technical implementation of these designs, including coding and functionality.
+          </p>
+          <a href="#">Learn more</a>
+        </div>
+        <div>
+          <i class="fa-solid fa-database"></i>
+          <h2>Data Analysis</h2>
+          <p>Data analysis involves inspecting, cleaning, and modeling data to uncover useful information, draw conclusions, and support decision-making.
+          </p>
+          <a href="#">Learn more</a>
+        </div>    
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-------------------------------portfolio------------------>
+
+<section>
+  <div id="portfolio">
+  <div class="container">
+      <div class="flex items-center justify-between">
+        <h1 class="sub-title">My Projects</h1>
+        <div>
+          <button id="addProjectBtn" class="add-project-btn"><i class="fa-solid fa-circle-plus"></i> Add Project</button>
+        </div>
+      </div>
+    <div class="work-list" id="workList">
+      <div class="work" onclick="showProjectDetail(0)">
+        <div class="work-card-icon">🛍️</div>
+        <h3 class="work-card-title">Ecommerce website</h3>
+        <p class="work-card-desc">Responsive e-commerce website with HTML, CSS, JavaScript, Bootstrap</p>
+        <button class="work-card-button">View Details</button>
+      </div>
+
+      <div class="work" onclick="showProjectDetail(1)">
+        <div class="work-card-icon">🤖</div>
+        <h3 class="work-card-title">Gemini clone</h3>
+        <p class="work-card-desc">React-based AI chatbot replicating Google Gemini</p>
+        <button class="work-card-button">View Details</button>
+      </div>
+
+      <div class="work" onclick="showProjectDetail(2)">
+        <div class="work-card-icon">🏥</div>
+        <h3 class="work-card-title">Hospital Management System</h3>
+        <p class="work-card-desc">Console-based system with C++, OOP, and file handling</p>
+        <button class="work-card-button">View Details</button>
+      </div>
+
+      <div class="work" onclick="showProjectDetail(3)">
+        <div class="work-card-icon">🍕</div>
+        <h3 class="work-card-title">Pizza Sales Analysis</h3>
+        <p class="work-card-desc">MySQL data analysis with sales patterns and trends</p>
+        <button class="work-card-button">View Details</button>
+      </div>
+
+      <div class="work" onclick="showProjectDetail(4)">
+        <div class="work-card-icon">📊</div>
+        <h3 class="work-card-title">Employee Performance Dashboard</h3>
+        <p class="work-card-desc">Power BI dashboard for performance and retention metrics</p>
+        <button class="work-card-button">View Details</button>
+      </div>
+
+      <div class="work" onclick="showProjectDetail(5)">
+        <div class="work-card-icon">🎉</div>
+        <h3 class="work-card-title">Diwali Sale Analysis</h3>
+        <p class="work-card-desc">Python sentiment analysis for sales improvement</p>
+        <button class="work-card-button">View Details</button>
+      </div>
+      <a href="#" class="btn"> See more</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Add Project Modal -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h3 id="modalTitle">Add New Project</h3>
+    <form id="addProjectForm">
+      <div class="form-row">
+        <input type="text" id="projectTitle" placeholder="Project title" required>
+      </div>
+      <div style="margin-top:10px">
+        <textarea id="projectDesc" rows="4" placeholder="Short description" required></textarea>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn-cancel" id="cancelAdd">Cancel</button>
+        <button type="submit" class="btn-save">Save Project</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Project Detail Modal -->
+<div class="modal-backdrop" id="projectDetailBackdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="projectDetailTitle">
+    <h3 id="projectDetailTitle"></h3>
+    <div id="projectDetailContent" style="margin-top:15px; max-height: 400px; overflow-y: auto;"></div>
+    <div class="actions" style="margin-top:20px">
+      <button type="button" class="btn-cancel" id="closeProjectDetail">Close</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <!-- JavaScript -->
+  <script>
+    function opentab(event, tabname){
+      var tablinks = document.getElementsByClassName("tab-links");
+      var tabcontents = document.getElementsByClassName("tab-contents");
+      
+      for (var tablink of tablinks) {
+        tablink.classList.remove("active-link");
+      }
+      for (var tabcontent of tabcontents) {
+        tabcontent.classList.remove("active-tab");
+      }
+      
+      event.currentTarget.classList.add("active-link");
+      document.getElementById(tabname).classList.add("active-tab");
+    }
+  </script>
+
+  <script>
+    var sidemenu=document.getElementById("sidemenu");
+
+    function openmenu(){
+      sidemenu.style.right ="0";
+    }
+    function closemenu(){
+      sidemenu.style.right ="-200px";
+    }
+
+  </script>
+
+
+
+
+<script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxuLgAFB_rG9GOHk9hpXx7LGDxLxxRt-AqAw3kZ9WWM724gqJpbBdkQOxTI3vWHUMfzSg/exec';  
+        const form = document.getElementById('contact-form');
+        const msg = document.getElementById('msg');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    msg.innerHTML = 'Message sent successfully!';
+                    setTimeout(() => {
+                        msg.innerHTML = '';
+                    }, 5000);
+                    form.reset();
+                })
+                .catch(error => {
+                    msg.innerHTML = 'Message failed to send!';
+                    console.error('Error!', error.message);
+                });
+        });
+</script>
+<script>
+  const PROJECT_DETAILS = [
+    {
+      title: 'Ecommerce website',
+      icon: '🛍️',
+      fullDesc: '• Developed a responsive e-commerce website with expertise in designing key pages, integrating interactive elements, and applying e-commerce principles.<br>• Technologies: HTML, CSS, JavaScript, Bootstrap<br>• Developed and designed the home page, shop page, single product page, blog page, and shopping cart.'
+    },
+    {
+      title: 'Gemini clone',
+      icon: '🤖',
+      fullDesc: '• React-based web application replicating the Google Gemini AI chatbot.<br>• Technologies Used: React, CSS, Google Gemini API<br>• Chat Interface, Google Gemini Integration, React Development.'
+    },
+    {
+      title: 'Hospital Management System',
+      icon: '🏥',
+      fullDesc: '• Developed a console-based Hospital Management System with features for managing patient records, doctor information, and appointment scheduling.<br>• Technologies: C++, Object-Oriented Programming (OOP), File Handling<br>• Tools: Visual Studio Code, g++'
+    },
+    {
+      title: 'Pizza Sales Analysis',
+      icon: '🍕',
+      fullDesc: '• Analyzed pizza sales data using MySQL.<br>• Extracted and queried data to identify sales patterns and trends.<br>• Provided actionable insights that optimized inventory management and marketing strategies.'
+    },
+    {
+      title: 'Employee Performance Dashboard',
+      icon: '📊',
+      fullDesc: '• Created a Power BI dashboard to analyze employee performance and retention metrics.<br>• Visualized trends and identified areas for improvement.<br>• Delivered insights that enhanced employee engagement and retention strategies.'
+    },
+    {
+      title: 'Diwali Sale Analysis',
+      icon: '🎉',
+      fullDesc: '• Improved sales and revenue through customer review analysis.<br>• Analyzed customer reviews and ratings using Python, NumPy, and Pandas.<br>• Performed sentiment analysis to identify key factors influencing sales. Developed recommendations to enhance sales strategies.'
+    }
+  ];
+
+  function showProjectDetail(index) {
+    const project = index < PROJECT_DETAILS.length ? PROJECT_DETAILS[index] : null;
+    if (!project) return;
+    
+    const backdrop = document.getElementById('projectDetailBackdrop');
+    const title = document.getElementById('projectDetailTitle');
+    const content = document.getElementById('projectDetailContent');
+    const isDark = document.documentElement.classList.contains('dark');
+    const textColor = isDark ? '#e2e8f0' : '#555';
+    
+    title.textContent = project.title;
+    content.innerHTML = `<div style="font-size: 48px; margin-bottom: 15px;">${project.icon}</div><p style="line-height: 1.8; color: ${textColor};">${project.fullDesc}</p>`;
+    
+    backdrop.classList.add('show');
+  }
+
+  document.getElementById('projectDetailBackdrop')?.addEventListener('click', (e) => {
+    if (e.target.id === 'projectDetailBackdrop') {
+      e.target.classList.remove('show');
+    }
+  });
+
+  document.getElementById('closeProjectDetail')?.addEventListener('click', () => {
+    document.getElementById('projectDetailBackdrop').classList.remove('show');
+  });
+
+  (function(){
+    const STORAGE_KEY = 'my_projects_v1';
+    const defaultProjects = [];
+
+    // Elements
+    const workList = document.getElementById('workList');
+    const addBtn = document.getElementById('addProjectBtn');
+    const modal = document.getElementById('modalBackdrop');
+    const cancelBtn = document.getElementById('cancelAdd');
+    const addForm = document.getElementById('addProjectForm');
+
+    function loadProjects(){
+      try{
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : defaultProjects;
+      }catch(e){
+        console.error(e); return defaultProjects;
+      }
+    }
+
+    function saveProjects(list){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    }
+
+    function makeWorkCard(p, index){
+      const div = document.createElement('div');
+      div.className = 'work';
+      const icons = ['🎨', '💼', '🚀', '⭐', '🔧', '🌟', '💡', '⚡'];
+      const icon = icons[index % icons.length];
+      const deleteBtn = `<button class="delete-project-btn" data-index="${index}" onclick="event.stopPropagation()" title="Delete project"><i class="fa-solid fa-trash"></i></button>`;
+      div.innerHTML = `
+        <div class="work-card-icon">${icon}</div>
+        <h3 class="work-card-title">${escapeHtml(p.title)}</h3>
+        <p class="work-card-desc">${escapeHtml(p.desc)}</p>
+        <button class="work-card-button" onclick="event.stopPropagation()">View Details</button>
+        ${deleteBtn}
+      `;
+      div.addEventListener('click', () => {
+        const userDetail = {
+          title: p.title,
+          icon: icon,
+          fullDesc: p.desc
+        };
+        const backdrop = document.getElementById('projectDetailBackdrop');
+        const title = document.getElementById('projectDetailTitle');
+        const content = document.getElementById('projectDetailContent');
+        const isDark = document.documentElement.classList.contains('dark');
+        const textColor = isDark ? '#e2e8f0' : '#555';
+        title.textContent = userDetail.title;
+        content.innerHTML = `<div style="font-size: 48px; margin-bottom: 15px;">${userDetail.icon}</div><p style="line-height: 1.8; color: ${textColor};">${userDetail.fullDesc}</p>`;
+        backdrop.classList.add('show');
+      });
+      return div;
+    }
+
+    function render(){
+      const list = loadProjects();
+      // clear existing dynamic cards
+      const dynamic = workList.querySelectorAll('.work.dynamic');
+      dynamic.forEach(n=>n.remove());
+
+      // append saved projects at the end
+      list.forEach((p, i) => {
+        const card = makeWorkCard(p, i);
+        card.classList.add('dynamic');
+        workList.appendChild(card);
+      });
+      
+      // Attach delete event listeners
+      document.querySelectorAll('.delete-project-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const idx = parseInt(btn.getAttribute('data-index'), 10);
+          if(confirm('Are you sure you want to delete this project?')) {
+            const list = loadProjects();
+            list.splice(idx, 1);
+            saveProjects(list);
+            render();
+          }
+        });
+      });
+    }
+
+
+
+    function openModal(){ modal.classList.add('show'); }
+    function closeModal(){ modal.classList.remove('show'); }
+
+    addBtn.addEventListener('click', ()=>{ openModal(); });
+    cancelBtn.addEventListener('click', ()=>{ closeModal(); });
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+
+    addForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const title = document.getElementById('projectTitle').value.trim();
+      const desc = document.getElementById('projectDesc').value.trim();
+      if(!title || !desc){ alert('Please provide title and description'); return; }
+      const list = loadProjects();
+      list.push({ title, desc, created: Date.now() });
+      saveProjects(list);
+      render();
+      addForm.reset();
+      closeModal();
+    });
+
+    function escapeHtml(s){
+      return (s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+    }
+
+    // initial render
+    render();
+  })();
+</script>
+
+<!-- Theme Toggle Script -->
+<script>
+  const htmlEl = document.documentElement;
+  const toggle = document.getElementById('toggle-theme');
+
+  // Sync with main page theme - use same 'theme' localStorage key
+  function syncThemeWithMain() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      htmlEl.classList.add('dark');
+      htmlEl.classList.remove('light-mode');
+    } else if (savedTheme === 'light') {
+      htmlEl.classList.remove('dark');
+      htmlEl.classList.add('light-mode');
+    } else {
+      // Use system preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        htmlEl.classList.add('dark');
+        htmlEl.classList.remove('light-mode');
+      } else {
+        htmlEl.classList.add('light-mode');
+        htmlEl.classList.remove('dark');
+      }
+    }
+    updateThemeIcon();
+  }
+
+  // Initial sync on page load
+  syncThemeWithMain();
+
+  // Listen for storage changes (when main page toggles theme)
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'theme') {
+      syncThemeWithMain();
+    }
+  });
+
+  toggle?.addEventListener('click', () => {
+    const isDark = htmlEl.classList.contains('dark');
+    if (isDark) {
+      htmlEl.classList.remove('dark');
+      htmlEl.classList.add('light-mode');
+      localStorage.setItem('theme', 'light');
+    } else {
+      htmlEl.classList.add('dark');
+      htmlEl.classList.remove('light-mode');
+      localStorage.setItem('theme', 'dark');
+    }
+    updateThemeIcon();
+  });
+
+  function updateThemeIcon() {
+    const icon = toggle.querySelector('i');
+    const isDark = htmlEl.classList.contains('dark');
+    if (isDark) {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+      toggle.style.color = 'white';
+    } else {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+      toggle.style.color = '#333';
+    }
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

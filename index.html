@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <title>My Portfolio</title>
+
+  <script>
+    window.tailwind = window.tailwind || {};
+    tailwind.config = { darkMode: 'class' };
+  </script>
+  
+ 
+</head>
+
+<body class="bg-white dark:bg-gray-900 text-black dark:text-white transition-colors">
+  
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="bg-gray-100 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col relative" style="width: 256px; min-width: 200px; max-width: 500px;">
+      <!-- Sidebar Header -->
+      <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+        <a href="index.html" class="font-bold text-xl text-gray-800 dark:text-white">LifeFlow</a>
+        <button id="toggle-theme" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <i class="fa-solid fa-moon dark:hidden"></i>
+          <i class="fa-solid fa-sun hidden dark:inline"></i>
+        </button>
+      </div>
+
+      <!-- Sidebar Navigation -->
+
+      <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+        <a href="" data-page="todo" class="sidebar-item flex items-center gap-3 p-3 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer">
+          <i class="fa-solid fa-list-check w-5"></i>
+          <span>To-Do</span>
+        </a>
+        <a href="" data-page="notes" class="sidebar-item flex items-center gap-3 p-3 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer">
+          <i class="fa-solid fa-note-sticky w-5"></i>
+          <span>Notes</span>
+        </a>
+        <a href="" data-page="bookmarks" class="sidebar-item flex items-center gap-3 p-3 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer">
+          <i class="fa-solid fa-bookmark w-5"></i>
+          <span>Bookmarks</span>
+        </a>
+        <a href="" data-page="learnings" class="sidebar-item flex items-center gap-3 p-3 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer">
+          <i class="fa-brands fa-youtube w-5"></i>
+          <span>Learnings</span>
+        </a>
+      </nav>
+
+      <!-- Resizer Handle -->
+      <div id="sidebar-resizer" class="absolute right-0 top-0 w-2 h-full cursor-col-resize hover:w-3 transition-all group z-10">
+        <div class="w-full h-full bg-transparent group-hover:bg-blue-500 dark:group-hover:bg-blue-400 opacity-0 group-hover:opacity-100 transition-all"></div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <!-- Top Navigation -->
+      <div id="nav"></div>
+
+      <!-- Main Content -->
+      <main id="main-content" class="flex-1 overflow-y-auto p-6">
+        <div id="page-content">
+          <!-- Default welcome content -->
+          <div class="max-w-6xl mx-auto">
+            <!-- Hero Section -->
+            <div class="mb-12">
+              <div class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl shadow-xl p-8 md:p-12 text-white">
+                <h1 class="text-5xl md:text-6xl font-bold mb-4">Welcome to LifeFlow</h1>
+                <p class="text-xl md:text-2xl opacity-90 mb-2">Your Personal Productivity & Portfolio Hub</p>
+                <p class="text-lg opacity-80">Manage your projects, tasks, notes, and learning journey all in one place</p>
+              </div>
+            </div>
+
+            <!-- About Me Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <!-- Profile Card -->
+              <div class="md:col-span-1 bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
+                <div class="h-40 bg-gradient-to-br from-cyan-400 to-purple-500"></div>
+                <div class="p-6 text-center -mt-12 relative z-10">
+                  <img src="myimages/user.png" alt="Profile" class="w-24 h-24 rounded-full border-4 border-white dark:border-gray-800 mx-auto mb-4 object-cover">
+                  <h2 class="text-2xl font-bold dark:text-white">Keerthi Ramatenki</h2>
+                  <p class="text-purple-600 dark:text-purple-400 font-semibold">Software Developer</p>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm mt-2">📍 From India</p>
+                </div>
+              </div>
+
+              <!-- Quick Stats -->
+              <div class="md:col-span-2 space-y-4">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+                  <h3 class="text-2xl font-bold mb-4 dark:text-white">About Me</h3>
+                  <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    I'm a passionate Software Developer and Data Analyst with a strong foundation in web development and problem-solving. graduated from in B.Tech at NIT Raipur, I specialize in creating responsive web applications and analyzing data to drive meaningful insights.
+                  </p>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-4">
+                  <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-4 text-white text-center shadow-lg">
+                    <div class="text-3xl font-bold">10+</div>
+                    <div class="text-sm opacity-90">Projects</div>
+                  </div>
+                  <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg p-4 text-white text-center shadow-lg">
+                    <div class="text-3xl font-bold">5+</div>
+                    <div class="text-sm opacity-90">Skills</div>
+                  </div>
+                  <div class="bg-gradient-to-br from-pink-500 to-pink-600 rounded-lg p-4 text-white text-center shadow-lg">
+                    <div class="text-3xl font-bold">2+</div>
+                    <div class="text-sm opacity-90">Years</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+         <!-- Sidebar links routing -->
+<nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+  <a href="#" data-page="todo" class="sidebar-item flex items-center gap-3 p-3 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer">
+    <i class="fa-solid fa-list-check w-5"></i>
+    <span>To-Do</span>
+  </a>
+  <a href="#" data-page="notes" class="sidebar-item flex items-center gap-3 p-3 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer">
+    <i class="fa-solid fa-note-sticky w-5"></i>
+    <span>Notes</span>
+  </a>
+  <a href="#" data-page="bookmarks" class="sidebar-item flex items-center gap-3 p-3 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer">
+    <i class="fa-solid fa-bookmark w-5"></i>
+    <span>Bookmarks</span>
+  </a>
+  <a href="#" data-page="learnings" class="sidebar-item flex items-center gap-3 p-3 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer">
+    <i class="fa-brands fa-youtube w-5"></i>
+    <span>Learnings</span>
+  </a>
+</nav>
+
+      <!-- Quick access cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-all p-6 cursor-pointer group" onclick="loadPage('portfolio')">
+          <div class="text-4xl mb-3 group-hover:scale-125 transition-transform">🎯</div>
+          <h4 class="font-bold dark:text-white">Portfolio</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">View my projects</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-all p-6 cursor-pointer group" onclick="loadPage('todo')">
+          <div class="text-4xl mb-3 group-hover:scale-125 transition-transform">✅</div>
+          <h4 class="font-bold dark:text-white">To-Do</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Manage tasks</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-all p-6 cursor-pointer group" onclick="loadPage('notes')">
+          <div class="text-4xl mb-3 group-hover:scale-125 transition-transform">📝</div>
+          <h4 class="font-bold dark:text-white">Notes</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Take notes</p>
+        </div>
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transition-all p-6 cursor-pointer group" onclick="loadPage('bookmarks')">
+          <div class="text-4xl mb-3 group-hover:scale-125 transition-transform">🔖</div>
+          <h4 class="font-bold dark:text-white">Bookmarks</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Save links</p>
+        </div>
+      </div>
+
+
+            <!-- Key Skills -->
+            <div class="mb-12">
+              <h3 class="text-3xl font-bold mb-6 dark:text-white">My Key Skills</h3>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-gradient-to-br from-orange-400 to-orange-600 rounded-lg p-4 text-white text-center shadow-lg hover:shadow-xl transition-shadow">
+                  <div class="text-2xl mb-2">💻</div>
+                  <h4 class="font-bold">Web Dev</h4>
+                  <p class="text-xs opacity-90">HTML, CSS, JS</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg p-4 text-white text-center shadow-lg hover:shadow-xl transition-shadow">
+                  <div class="text-2xl mb-2">⚛️</div>
+                  <h4 class="font-bold">React.js</h4>
+                  <p class="text-xs opacity-90">Frontend</p>
+                </div>
+                <div class="bg-gradient-to-br from-green-400 to-green-600 rounded-lg p-4 text-white text-center shadow-lg hover:shadow-xl transition-shadow">
+                  <div class="text-2xl mb-2">🐍</div>
+                  <h4 class="font-bold">Python</h4>
+                  <p class="text-xs opacity-90">Data Analysis</p>
+                </div>
+                <div class="bg-gradient-to-br from-red-400 to-red-600 rounded-lg p-4 text-white text-center shadow-lg hover:shadow-xl transition-shadow">
+                  <div class="text-2xl mb-2">⚙️</div>
+                  <h4 class="font-bold">C/C++</h4>
+                  <p class="text-xs opacity-90">Backend</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Activity / Fun Facts -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold mb-4 dark:text-white">🎯 What I Do</h3>
+                <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                  <li class="flex items-start gap-3">
+                    <span class="text-2xl">🚀</span>
+                    <span>Build responsive web applications that solve real problems</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-2xl">📊</span>
+                    <span>Analyze data to extract meaningful business insights</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-2xl">🎨</span>
+                    <span>Design beautiful and intuitive user interfaces</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-2xl">🤝</span>
+                    <span>Lead teams and collaborate on exciting projects</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold mb-4 dark:text-white">💡 Fun Facts</h3>
+                <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+                  <li class="flex items-start gap-3">
+                    <span class="text-2xl">🎓</span>
+                    <span>Currently in 4th year at NIT Raipur, pursuing B.Tech</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-2xl">🎬</span>
+                    <span>Love learning through YouTube & online courses</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-2xl">👥</span>
+                    <span>Secretary of ECE Department & Robotics Club Head</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-2xl">⚡</span>
+                    <span>Passionate about continuous learning & self-improvement</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="mt-12 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl shadow-xl p-8 md:p-12 text-white text-center">
+              <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Explore?</h2>
+              <p class="text-lg opacity-90 mb-6">Browse my portfolio, check out my projects, or explore the productivity tools</p>
+              <div class="flex flex-wrap gap-4 justify-center">
+                <a href="/myimages/my_resume.pdf" download class="px-6 py-3 bg-white text-purple-600 font-bold rounded-lg hover:shadow-lg transition-shadow">
+                  <i class="fas fa-download mr-2"></i>Download Resume
+                </a>
+                <a href="Portfolio.html" class="px-6 py-3 bg-white/20 border-2 border-white text-white font-bold rounded-lg hover:bg-white/30 transition-all">
+                  <i class="fas fa-briefcase mr-2"></i>View Portfolio
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------- Footer -->
+      <div id="footer" class="border-t border-gray-200 dark:border-gray-700"></div>
+    </div>
+  </div>
+  <!-- src/Footer.html -->
+<footer class="bg-gray-100 dark:bg-gray-800 py-6 px-6">
+  <div class="max-w-7xl mx-auto text-center text-gray-600 dark:text-gray-400">
+    <p>&copy; 2025 LifeFlow. All rights are reserved.</p>
+    <p>Contact: keerthiramatenki@gmail.com</p>
+     <a href="https://github.com/dolly_147" >github</a>
+  </div>
+</footer>
+</body>
+
+</html>
+
+// JavaScript to load fragments and handle sidebar resizing
+<script>
+  /* ---------- Fragment loader: loads markup, runs scripts (inline & external) ---------- */
+  async function loadFragment(url, selector) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
+      const html = await res.text();
+
+      // Insert HTML
+      const container = document.querySelector(selector);
+      if (!container) throw new Error(`Selector ${selector} not found`);
+      container.innerHTML = html;
+
+      const temp = document.createElement('div');
+      temp.innerHTML = html;
+
+      // External scripts first (preserve order)
+      const externalScripts = temp.querySelectorAll('script[src]');
+      for (const s of externalScripts) {
+        if (document.querySelector(`script[src="${s.src}"]`)) continue;
+        const newScript = document.createElement('script');
+        newScript.src = s.src;
+        for (const { name, value } of s.attributes) newScript.setAttribute(name, value);
+        document.body.appendChild(newScript);
+        await new Promise((res) => newScript.addEventListener('load', res));
+      }
+
+      // Inline scripts
+      const inlineScripts = temp.querySelectorAll('script:not([src])');
+      inlineScripts.forEach(s => {
+        const newScript = document.createElement('script');
+        if (s.type) newScript.type = s.type;
+        newScript.textContent = s.textContent;
+        document.body.appendChild(newScript);
+        // optionally remove after execution: document.body.removeChild(newScript);
+      });
+
+    } catch (err) {
+      console.error('Error loading fragment', url, err);
+    }
+  }
+
+  // Page mapping: sidebar item -> fragment file
+  const pageMap = {
+    'todo': 'Todo.html',
+    'notes': 'Notes.html',
+    'bookmarks': 'Bookmarks.html',
+    'learnings': 'Learnings.html',
+    'portfolio': 'Portfolio.html',
+    'about': 'About.html',
+    'contact': 'Contact.html'
+  };
+
+  // Load a page into the main content area
+  async function loadPage(pageName) {
+    const fragmentFile = pageMap[pageName];
+    if (!fragmentFile) return;
+    
+    try {
+      await loadFragment(fragmentFile, '#page-content');
+      // Update active sidebar item
+      document.querySelectorAll('.sidebar-item').forEach(item => {
+        item.classList.remove('bg-blue-500', 'text-white', 'dark:bg-blue-600');
+        item.classList.add('text-gray-700', 'dark:text-gray-300');
+      });
+      const activeItem = document.querySelector(`[data-page="${pageName}"]`);
+      if (activeItem) {
+        activeItem.classList.add('bg-blue-500', 'text-white', 'dark:bg-blue-600');
+        activeItem.classList.remove('text-gray-700', 'dark:text-gray-300');
+      }
+    } catch (err) {
+      console.error(`Error loading page ${pageName}:`, err);
+    }
+  }
+
+  // Sidebar Resizer Functionality
+  function initSidebarResizer() {
+    const sidebar = document.getElementById('sidebar');
+    const resizer = document.getElementById('sidebar-resizer');
+    
+    if (!sidebar || !resizer) return;
+
+    // Restore saved sidebar width
+    const savedWidth = localStorage.getItem('sidebar-width');
+    if (savedWidth) {
+      sidebar.style.width = savedWidth + 'px';
+    }
+
+    let isResizing = false;
+    let startX = 0;
+    let startWidth = 0;
+
+    // Mouse down - start resizing
+    resizer.addEventListener('mousedown', (e) => {
+      isResizing = true;
+      startX = e.clientX;
+      startWidth = parseInt(window.getComputedStyle(sidebar).width, 10);
+      
+      // Prevent text selection while dragging
+      document.body.style.userSelect = 'none';
+      document.body.style.cursor = 'col-resize';
+      
+      e.preventDefault();
+    });
+
+    // Mouse move - resize sidebar
+    document.addEventListener('mousemove', (e) => {
+      if (!isResizing) return;
+
+      const width = startWidth + e.clientX - startX;
+      const minWidth = 200;
+      const maxWidth = 500;
+      
+      // Constrain width between min and max
+      const newWidth = Math.max(minWidth, Math.min(maxWidth, width));
+      sidebar.style.width = newWidth + 'px';
+    });
+
+    // Mouse up - stop resizing
+    document.addEventListener('mouseup', () => {
+      if (isResizing) {
+        isResizing = false;
+        document.body.style.userSelect = '';
+        document.body.style.cursor = '';
+        
+        // Save width to localStorage
+        const currentWidth = parseInt(window.getComputedStyle(sidebar).width, 10);
+        localStorage.setItem('sidebar-width', currentWidth);
+      }
+    });
+  }
+
+  // Initialize
+  (async () => {
+    // Load initial fragments (Nav and Footer)
+    await loadFragment('Nav.html', '#nav');
+    await loadFragment('src/Footer.html', '#footer');
+
+    // Initialize sidebar resizer
+    initSidebarResizer();
+
+    // Sidebar navigation handlers
+    document.querySelectorAll('.sidebar-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pageName = item.getAttribute('data-page');
+        if (pageName) {
+          loadPage(pageName);
+        }
+      });
+    });
+
+    // Theme toggle
+    const htmlEl = document.documentElement;
+    const toggle = document.getElementById('toggle-theme');
+    toggle?.addEventListener('click', () => {
+      htmlEl.classList.toggle('dark');
+      localStorage.setItem('theme', htmlEl.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Restore saved theme
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') htmlEl.classList.add('dark');
+    else if (saved === 'light') htmlEl.classList.remove('dark');
+    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      htmlEl.classList.add('dark');
+    }
+  })();
+</script>
