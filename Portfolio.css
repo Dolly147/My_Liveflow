@@ -156,7 +156,7 @@ body {
   align-items: center;
   justify-content: flex-start; /* Align content to left */
   padding: 8rem 7%; /* Add some left/right padding */
-  background-image: url('/myimages/backgrounD-removebg-preview-Picsart-AiImageEnhancer.png');
+  background-image: url('./myimages/backgrounD-removebg-preview-Picsart-AiImageEnhancer.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
